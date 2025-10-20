@@ -497,6 +497,7 @@ public class Transportation implements
         .setAttr(Fields.CLASS, highwayClass)
         .setAttr(Fields.SUBCLASS, highwaySubclass(highwayClass, element.publicTransport(), highway))
         .setAttr(Fields.NETWORK, networkType != null ? networkType.name : null)
+        .setAttr("maxspeed", element.source().getTag("maxspeed"))
         .setAttrWithMinSize(Fields.BRUNNEL, brunnel(element.isBridge(), element.isTunnel(), element.isFord()), 4, 4, 12)
         // z8+
         .setAttrWithMinzoom(Fields.EXPRESSWAY, expressway ? 1 : null, 8)
