@@ -126,6 +126,7 @@ public class MountainPeak implements
             (nullIfEmpty(element.name()) != null ? 10_000 : 0)
         )
         .setMinZoom(7)
+        .setMaxZoom(14)
         // need to use a larger buffer size to allow enough points through to not cut off
         // any label grid squares which could lead to inconsistent label ranks for a feature
         // in adjacent tiles. postProcess() will remove anything outside the desired buffer.
@@ -150,6 +151,7 @@ public class MountainPeak implements
       .putAttrs(OmtLanguageUtils.getNames(element.source().tags(), translations))
       .setSortKey(rank)
       .setMinZoom(13)
+      .setMaxZoom(14)
       .setBufferPixels(100);
   }
 

@@ -100,7 +100,8 @@ public class Park implements
     var outline = features.polygon(LAYER_NAME).setBufferPixels(BUFFER_SIZE)
       .setAttrWithMinzoom(Fields.CLASS, clazz, 5)
       .setMinPixelSize(2)
-      .setMinZoom(4);
+      .setMinZoom(4)
+      .setMaxZoom(14);
 
     // park name label point (if it has one)
     if (element.name() != null) {
@@ -122,7 +123,7 @@ public class Park implements
             .thenByTruesFirst(element.source().hasTag("wikipedia") || element.source().hasTag("wikidata"))
             .thenByLog(area, 1d, SMALLEST_PARK_WORLD_AREA, 1 << (SORT_KEY_BITS - 2) - 1)
             .get()
-          ).setMinZoom(minzoom);
+          ).setMinZoom(minzoom).setMaxZoom(14);
       } catch (GeometryException e) {
         e.log(stats, "omt_park_area", "Unable to get park area for " + element.source().id());
       }

@@ -114,7 +114,7 @@ public class Landcover implements
         features.polygon(LAYER_NAME).setBufferPixels(BUFFER_SIZE)
           .setAttr(Fields.CLASS, clazz)
           .setAttr(Fields.SUBCLASS, info.subclass)
-          .setZoomRange(info.minzoom, info.maxzoom);
+          .setZoomRange(info.minzoom, Math.max(info.maxzoom, 14));
       }
     }
   }
@@ -131,7 +131,8 @@ public class Landcover implements
         .setAttr(Fields.CLASS, clazz)
         .setAttr(Fields.SUBCLASS, subclass)
         .setNumPointsAttr(TEMP_NUM_POINTS_ATTR)
-        .setMinZoom(7);
+        .setMinZoom(7)
+        .setMaxZoom(14);
     }
   }
 

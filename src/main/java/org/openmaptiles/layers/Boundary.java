@@ -207,7 +207,7 @@ public class Boundary implements
     };
     if (info != null) {
       features.line(LAYER_NAME).setBufferPixels(BUFFER_SIZE)
-        .setZoomRange(info.minzoom, info.maxzoom)
+        .setZoomRange(info.minzoom, Math.max(info.maxzoom, 14))
         .setMinPixelSizeAtAllZooms(0)
         .setAttr(Fields.ADMIN_LEVEL, info.adminLevel)
         .setAttr(Fields.MARITIME, 0)
@@ -320,6 +320,7 @@ public class Boundary implements
             .setAttr(Fields.MARITIME, maritime ? 1 : 0)
             .setMinPixelSizeAtAllZooms(0)
             .setMinZoom(minzoom)
+            .setMaxZoom(14)
             .setAttr(Fields.CLAIMED_BY, claimedBy)
             .setAttr(Fields.DISPUTED_NAME, editName(disputedName));
         }
@@ -333,7 +334,8 @@ public class Boundary implements
       .putAttrs(OmtLanguageUtils.getNames(element.source().tags(), translations))
       .setAttr(OpenMapTilesSchema.Boundary.Fields.CLASS, element.boundary())
       .setMinPixelSizeBelowZoom(13, 4) // for Z4: `sql_filter: area>power(ZRES3,2)`, etc.
-      .setMinZoom(4);
+      .setMinZoom(4)
+      .setMaxZoom(14);
   }
 
   @Override
@@ -362,7 +364,8 @@ public class Boundary implements
               .setAttr(Fields.CLAIMED_BY, key.claimedBy)
               .setAttr(Fields.DISPUTED_NAME, key.disputed ? editName(key.name) : null)
               .setMinPixelSizeAtAllZooms(0)
-              .setMinZoom(key.minzoom);
+              .setMinZoom(key.minzoom)
+              .setMaxZoom(14);
             if (key.adminLevel == 2 && !key.disputed) {
               // only non-disputed admin 2 boundaries get to have adm0_{l,r}, at zoom 5 and more
               newFeature

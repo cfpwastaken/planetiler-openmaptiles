@@ -204,7 +204,8 @@ public class TransportationName implements
           .setAttr(Fields.SUBCLASS, subclass)
           .setAttr(Fields.LAYER, nullIfLong(element.layer(), 0))
           .setSortKeyDescending(element.zOrder())
-          .setMinZoom(10);
+          .setMinZoom(10)
+          .setMaxZoom(14);
       }
     }
   }
@@ -267,7 +268,8 @@ public class TransportationName implements
       .setAttr(Fields.SUBCLASS, highwaySubclass(highwayClass, null, highway))
       .setMinPixelSize(0)
       .setSortKey(element.zOrder())
-      .setMinZoom(minzoom);
+      .setMinZoom(minzoom)
+      .setMaxZoom(14);
 
     // populate route_1_<something>, route_2_<something>, ... route_n_<something> tags and remove duplicates
     Set<String> routes = new HashSet<>();
@@ -322,7 +324,8 @@ public class TransportationName implements
         .setAttr(Fields.SUBCLASS, element.aerialway())
         .setMinPixelSize(0)
         .setSortKey(element.zOrder())
-        .setMinZoom(12);
+        .setMinZoom(12)
+        .setMaxZoom(14);
     }
   }
 
@@ -336,7 +339,8 @@ public class TransportationName implements
         .setAttr(Fields.CLASS, element.shipway())
         .setMinPixelSize(0)
         .setSortKey(element.zOrder())
-        .setMinZoom(12);
+        .setMinZoom(12)
+        .setMaxZoom(14);
     }
   }
 

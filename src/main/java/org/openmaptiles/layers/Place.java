@@ -247,6 +247,7 @@ public class Place implements
         .setAttr(Fields.CLASS, FieldValues.CLASS_COUNTRY)
         .setAttr(Fields.RANK, rank)
         .setMinZoom(rank - 1)
+        .setMaxZoom(14)
         .setSortKey(rank);
     } catch (GeometryException e) {
       e.log(stats, "omt_place_country",
@@ -274,6 +275,7 @@ public class Place implements
           // TODO: This starts including every "state" point at z2, even before many countries show up.
           //       Instead we might want to set state min zooms based on rank from natural earth?
           .setMinZoom(2)
+          .setMaxZoom(14)
           .setSortKey(rank);
       }
     } catch (GeometryException e) {
@@ -294,6 +296,7 @@ public class Place implements
         .setAttr(Fields.CLASS, "island")
         .setAttr(Fields.RANK, rank)
         .setMinZoom(minzoom)
+        .setMaxZoom(14)
         .setSortKey(SortKey.orderByLog(area, 1d, MIN_ISLAND_WORLD_AREA).get());
     } catch (GeometryException e) {
       e.log(stats, "omt_place_island_poly",
@@ -307,7 +310,8 @@ public class Place implements
       .putAttrs(OmtLanguageUtils.getNames(element.source().tags(), translations))
       .setAttr(Fields.CLASS, "island")
       .setAttr(Fields.RANK, 7)
-      .setMinZoom(12);
+      .setMinZoom(12)
+      .setMaxZoom(14);
   }
 
   @Override
@@ -355,6 +359,7 @@ public class Place implements
       .setAttr(Fields.CLASS, element.place())
       .setAttr(Fields.RANK, rank)
       .setMinZoom(minzoom)
+      .setMaxZoom(14)
       .setSortKey(getSortKey(rank, placeType, element.population(), element.name()))
       .setPointLabelGridPixelSize(12, 128);
 
@@ -383,7 +388,8 @@ public class Place implements
         .putAttrs(OmtLanguageUtils.getNames(element.source().tags(), translations))
         .setAttr(OpenMapTilesSchema.Boundary.Fields.CLASS, element.boundary())
         .setAttr(Fields.RANK, rank)
-        .setMinZoom(minzoom);
+        .setMinZoom(minzoom)
+        .setMaxZoom(14);
     } catch (GeometryException e) {
       e.log(stats, "omt_boundary_poly",
         "Unable to get point for OSM boundary polygon " + element.source().id());

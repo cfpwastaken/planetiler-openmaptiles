@@ -74,6 +74,7 @@ public class AerodromeLabel implements
     features.centroid(LAYER_NAME)
       .setBufferPixels(BUFFER_SIZE)
       .setMinZoom(important ? 8 : 10)
+      .setMaxZoom(14)
       .putAttrs(OmtLanguageUtils.getNames(element.source().tags(), translations))
       .putAttrs(Utils.elevationTags(element.ele()))
       .setAttr(Fields.IATA, nullIfEmpty(element.iata()))

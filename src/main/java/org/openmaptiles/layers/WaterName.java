@@ -210,7 +210,8 @@ public class WaterName implements
         .putAttrs(OmtLanguageUtils.getNames(source.tags(), translations))
         .setAttr(Fields.CLASS, clazz)
         .setAttr(Fields.INTERMITTENT, element.isIntermittent() ? 1 : 0)
-        .setMinZoom(minZoom);
+        .setMinZoom(minZoom)
+        .setMaxZoom(14);
     }
   }
 
@@ -258,7 +259,8 @@ public class WaterName implements
       .setBufferPixels(BUFFER_SIZE)
       .putAttrs(OmtLanguageUtils.getNames(element.source().tags(), translations))
       .setAttr(Fields.INTERMITTENT, element.isIntermittent() ? 1 : 0)
-      .setMinZoom(minzoom);
+      .setMinZoom(minzoom)
+      .setMaxZoom(14);
     return output;
   }
 

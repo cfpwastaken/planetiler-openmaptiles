@@ -195,6 +195,7 @@ public class Waterway implements
       .setAttr(Fields.CLASS, element.waterway())
       .putAttrs(OmtLanguageUtils.getNames(element.source().tags(), translations))
       .setMinZoom(minzoom)
+      .setMaxZoom(14)
       // details only at higher zoom levels so that named rivers can be merged more aggressively
       .setAttrWithMinzoom(Fields.BRUNNEL, Utils.brunnel(element.isBridge(), element.isTunnel()), 12)
       .setAttrWithMinzoom(Fields.INTERMITTENT, element.isIntermittent() ? 1 : 0, 12)

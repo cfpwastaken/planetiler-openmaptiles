@@ -161,6 +161,7 @@ public class Building implements
     if (renderHeight < 3660 && renderMinHeight < 3660) {
       var feature = features.polygon(LAYER_NAME).setBufferPixels(BUFFER_SIZE)
         .setMinZoom(13)
+        .setMaxZoom(14)
         .setMinPixelSize(2)
         .setAttrWithMinzoom(Fields.RENDER_HEIGHT, renderHeight, 14)
         .setAttrWithMinzoom(Fields.RENDER_MIN_HEIGHT, renderMinHeight, 14)

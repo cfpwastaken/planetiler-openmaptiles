@@ -166,7 +166,8 @@ public class Water implements
     features.polygon(LAYER_NAME)
       .setBufferPixels(BUFFER_SIZE)
       .setAttr(Fields.CLASS, FieldValues.CLASS_OCEAN)
-      .setMinZoom(6);
+      .setMinZoom(6)
+      .setMaxZoom(14);
   }
 
   @Override
@@ -177,6 +178,7 @@ public class Water implements
         .setBufferPixels(BUFFER_SIZE)
         .setMinPixelSizeBelowZoom(11, 2)
         .setMinZoom(6)
+        .setMaxZoom(14)
         .setAttr(Fields.ID, element.source().id())
         .setAttr(Fields.INTERMITTENT, element.isIntermittent() ? 1 : 0)
         .setAttrWithMinzoom(Fields.BRUNNEL, Utils.brunnel(element.isBridge(), element.isTunnel()), 12)

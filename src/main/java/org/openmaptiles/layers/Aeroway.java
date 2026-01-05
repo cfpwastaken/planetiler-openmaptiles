@@ -60,6 +60,7 @@ public class Aeroway implements
   public void process(Tables.OsmAerowayPolygon element, FeatureCollector features) {
     features.polygon(LAYER_NAME)
       .setMinZoom(10)
+      .setMaxZoom(14)
       .setMinPixelSize(2)
       .setAttr(Fields.CLASS, element.aeroway())
       .setAttr(Fields.REF, element.ref());
@@ -69,6 +70,7 @@ public class Aeroway implements
   public void process(Tables.OsmAerowayLinestring element, FeatureCollector features) {
     features.line(LAYER_NAME)
       .setMinZoom(10)
+      .setMaxZoom(14)
       .setAttr(Fields.CLASS, element.aeroway())
       .setAttr(Fields.REF, element.ref());
   }
@@ -77,6 +79,7 @@ public class Aeroway implements
   public void process(Tables.OsmAerowayPoint element, FeatureCollector features) {
     features.point(LAYER_NAME)
       .setMinZoom(14)
+      .setMaxZoom(14)
       .setAttr(Fields.CLASS, element.aeroway())
       .setAttr(Fields.REF, element.ref());
   }

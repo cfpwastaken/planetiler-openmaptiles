@@ -120,7 +120,8 @@ public class Landuse implements
       }
       var feature = features.polygon(LAYER_NAME).setBufferPixels(BUFFER_SIZE)
         .setAttr(Fields.CLASS, clazz)
-        .setMinZoom(Z6_CLASSES.contains(clazz) ? 6 : 9);
+        .setMinZoom(Z6_CLASSES.contains(clazz) ? 6 : 9)
+        .setMaxZoom(14);
       if (FieldValues.CLASS_RESIDENTIAL.equals(clazz)) {
         feature
           .setMinPixelSize(0.1)

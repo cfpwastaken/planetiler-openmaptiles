@@ -321,7 +321,8 @@ public class Poi implements
       .putAttrs(OmtLanguageUtils.getNames(element.source().tags(), translations))
       .setPointLabelGridPixelSize(14, 64)
       .setSortKey(rankOrder)
-      .setMinZoom(minzoom);
+      .setMinZoom(minzoom)
+      .setMaxZoom(14);
   }
 
   @Override

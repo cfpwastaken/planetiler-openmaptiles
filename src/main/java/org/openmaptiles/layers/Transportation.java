@@ -519,7 +519,8 @@ public class Transportation implements
         .setAttrWithMinzoom(Fields.SURFACE, surface(coalesce(element.surface(), element.tracktype())), 12)
         .setMinPixelSize(0) // merge during post-processing, then limit by size
         .setSortKey(element.zOrder())
-        .setMinZoom(minzoom);
+        .setMinZoom(minzoom)
+        .setMaxZoom(14);
 
       if (isFootwayOrSteps(highway)) {
         feature
@@ -616,7 +617,8 @@ public class Transportation implements
         .setAttrWithMinzoom(Fields.LAYER, nullIfLong(element.layer(), 0), 9)
         .setSortKey(element.zOrder())
         .setMinPixelSize(0) // merge during post-processing, then limit by size
-        .setMinZoom(minzoom);
+        .setMinZoom(minzoom)
+        .setMaxZoom(14);
     }
   }
 
@@ -632,7 +634,8 @@ public class Transportation implements
       .setAttr(Fields.LAYER, nullIfLong(element.layer(), 0))
       .setSortKey(element.zOrder())
       .setMinPixelSize(0) // merge during post-processing, then limit by size
-      .setMinZoom(12);
+      .setMinZoom(12)
+      .setMaxZoom(14);
   }
 
   @Override
@@ -647,6 +650,7 @@ public class Transportation implements
       .setSortKey(element.zOrder())
       .setMinPixelSize(0) // merge during post-processing, then limit by size
       .setMinZoom(4)
+      .setMaxZoom(14)
       .setMinPixelSizeBelowZoom(10, 32); // `sql_filter: ST_Length(...)` used in OpenMapTiles translates to 32px
   }
 
@@ -665,7 +669,8 @@ public class Transportation implements
           .setAttr(Fields.BRUNNEL, brunnel("bridge".equals(manMade), false, false))
           .setAttr(Fields.LAYER, nullIfLong(element.layer(), 0))
           .setSortKey(element.zOrder())
-          .setMinZoom(13);
+          .setMinZoom(13)
+          .setMaxZoom(14);
       }
     }
   }
