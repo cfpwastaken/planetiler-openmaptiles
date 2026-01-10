@@ -10,7 +10,7 @@ import org.openmaptiles.OpenMapTilesProfile;
 
 public class Raw implements Layer, OpenMapTilesProfile.OsmAllProcessor {
 
-  public static List<String> TAG_WHITELIST = Arrays.asList("amenity", "shop", "name", "opening_hours", "email", "website", "phone", "internet_access", "wheelchair", "cuisine", "indoor_seating", "outdoor_seating", "takeaway", "drive_through");
+  public static List<String> TAG_WHITELIST = Arrays.asList("amenity", "shop", "tourism", "name", "opening_hours", "email", "website", "phone", "internet_access", "wheelchair", "cuisine", "indoor_seating", "outdoor_seating", "takeaway", "drive_through");
   public static List<String> TAG_PREFIX_WHITELIST = Arrays.asList("addr:", "contact:", "payment:", "wheelchair:", "fuel:", "internet_access:");
 
   @Override
