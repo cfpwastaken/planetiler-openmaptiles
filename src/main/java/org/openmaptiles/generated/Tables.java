@@ -345,7 +345,7 @@ public class Tables {
     @Override String service, @Override String access, @Override boolean toll, @Override String usage,
     @Override String publicTransport, @Override String manMade, @Override String bicycle, @Override String foot,
     @Override String horse, @Override String mtbScale, @Override String sacScale, @Override String surface,
-    @Override boolean expressway, @Override SourceFeature source)
+    @Override boolean expressway, String motorroad, @Override SourceFeature source)
     implements Row, WithHighway, WithConstruction, WithTracktype, WithRef, WithNetwork, WithZOrder, WithLayer,
     WithLevel, WithIndoor, WithName, WithNameEn, WithNameDe, WithIsTunnel, WithIsBridge, WithIsRamp, WithIsFord,
     WithIsOneway, WithIsArea, WithService, WithAccess, WithToll, WithUsage, WithPublicTransport, WithManMade,
@@ -359,7 +359,7 @@ public class Tables {
         source.getString("service"), source.getString("access"), source.getBoolean("toll"), source.getString("usage"),
         source.getString("public_transport"), source.getString("man_made"), source.getString("bicycle"),
         source.getString("foot"), source.getString("horse"), source.getString("mtb:scale"),
-        source.getString("sac_scale"), source.getString("surface"), source.getBoolean("expressway"), source);
+        source.getString("sac_scale"), source.getString("surface"), source.getBoolean("expressway"), source.getString("motorroad"), source);
     }
 
     /** Imposm3 "mapping" to filter OSM elements that should appear in this "table". */

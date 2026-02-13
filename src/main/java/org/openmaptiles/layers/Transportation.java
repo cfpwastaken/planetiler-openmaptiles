@@ -240,7 +240,10 @@ public class Transportation implements
     ), null) : isBridgeOrPier(manMade) ? manMade : null;
   }
 
-  static String highwaySubclass(String highwayClass, String publicTransport, String highway) {
+  static String highwaySubclass(String highwayClass, String publicTransport, String highway, String motorroad) {
+    if(motorroad != null && motorroad.equals("yes")) {
+      return "motorroad";
+    }
     return FieldValues.CLASS_PATH.equals(highwayClass) ? coalesce(nullIfEmpty(publicTransport), highway) : null;
   }
 
@@ -495,7 +498,7 @@ public class Transportation implements
       FeatureCollector.Feature feature = features.line(LAYER_NAME).setBufferPixels(BUFFER_SIZE)
         // main attributes at all zoom levels (used for grouping <= z8)
         .setAttr(Fields.CLASS, highwayClass)
-        .setAttr(Fields.SUBCLASS, highwaySubclass(highwayClass, element.publicTransport(), highway))
+        .setAttr(Fields.SUBCLASS, highwaySubclass(highwayClass, element.publicTransport(), highway, element.motorroad()))
         .setAttr(Fields.NETWORK, networkType != null ? networkType.name : null)
         .setAttr("maxspeed", element.source().getTag("maxspeed"))
         .setAttr("overtaking", element.source().getTag("overtaking"))
@@ -665,7 +668,7 @@ public class Transportation implements
       if (highwayClass != null) {
         features.polygon(LAYER_NAME).setBufferPixels(BUFFER_SIZE)
           .setAttr(Fields.CLASS, highwayClass)
-          .setAttr(Fields.SUBCLASS, highwaySubclass(highwayClass, element.publicTransport(), element.highway()))
+          .setAttr(Fields.SUBCLASS, highwaySubclass(highwayClass, element.publicTransport(), element.highway(), null))
           .setAttr(Fields.BRUNNEL, brunnel("bridge".equals(manMade), false, false))
           .setAttr(Fields.LAYER, nullIfLong(element.layer(), 0))
           .setSortKey(element.zOrder())

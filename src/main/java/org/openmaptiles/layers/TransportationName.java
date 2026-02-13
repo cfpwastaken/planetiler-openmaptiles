@@ -265,7 +265,7 @@ public class TransportationName implements
         firstRelationWithNetwork != null ? firstRelationWithNetwork.networkType().name : !nullOrEmpty(ref) ? "road" :
           null)
       .setAttr(Fields.CLASS, highwayClass)
-      .setAttr(Fields.SUBCLASS, highwaySubclass(highwayClass, null, highway))
+      .setAttr(Fields.SUBCLASS, highwaySubclass(highwayClass, null, highway, element.motorroad()))
       .setMinPixelSize(0)
       .setSortKey(element.zOrder())
       .setMinZoom(minzoom)
