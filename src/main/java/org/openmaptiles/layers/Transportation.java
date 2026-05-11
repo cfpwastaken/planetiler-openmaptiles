@@ -532,7 +532,8 @@ public class Transportation implements
       }
 
       for (Map.Entry<String, Object> tag : element.source().tags().entrySet()) {
-        if (tag.getKey().startsWith("maxspeed") && tag.getKey().endsWith(":conditional")) {
+        if (!tag.getKey().endsWith(":conditional")) continue;
+        if (tag.getKey().startsWith("maxspeed") || tag.getKey().startsWith("overtaking")) {
           feature.setAttr(tag.getKey(), tag.getValue());
         }
       }
