@@ -530,6 +530,12 @@ public class Transportation implements
           .setAttr(Fields.LEVEL, Parse.parseLongOrNull(element.source().getTag("level")))
           .setAttr(Fields.INDOOR, element.indoor() ? 1 : null);
       }
+
+      for (Map.Entry<String, Object> tag : element.source().tags().entrySet()) {
+        if (tag.getKey().startsWith("maxspeed") && tag.getKey().endsWith(":conditional")) {
+          feature.setAttr(tag.getKey(), tag.getValue());
+        }
+      }
     }
   }
 
